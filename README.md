@@ -105,3 +105,54 @@ Imagine que el back-end de su sitio web ha alcanzado el límite de su capacidad,
 - Escalar el back-end por separado para mejorar el rendimiento.
 - Decidir utilizar un servicio de almacenamiento diferente.
 - Reemplazar el contenedor de almacenamiento sin que ello afecte al resto de la aplicación.
+
+# Decisión de cuándo usar Azure Function
+En otras palabras, para una gran cantidad de tiempo, la aplicación espera una entrada determinada antes de realizar cualquier procesamiento. Para reducir los costos, se quiere evitar el tener que pagar por el tiempo que la aplicación espera la entrada. Teniendo esto en cuenta, ha decidido investigar Azure Functions para ver si puede ser de ayuda.
+
+La informática sin servidor es la abstracción de los servidores, la infraestructura y los sistemas operativos. Con la informática sin servidor, Azure se encarga de administrar la infraestructura de servidor, así como de la asignación y desasignación de recursos según la demanda. La infraestructura no es responsabilidad del usuario. El escalado y el rendimiento se controlan automáticamente. Solo se le cobrarán los recursos exactos que use. Tampoco hay ninguna necesidad de reservar capacidad.
+
+La informática sin servidor incluye la abstracción de servidores, un escalado controlado por eventos y la microfacturación:
+
+- Abstracción de servidores: la informática sin servidor abstrae los servidores en los que se ejecuta. Nunca se reservan instancias de servidor de forma explícita. La plataforma las administra de forma automática. Cada ejecución de función puede ejecutarse en una instancia de proceso diferente. 
+- Escalado controlado por eventos: la informática sin servidor es una opción excelente para las cargas de trabajo que responden a eventos entrantes. Los eventos incluyen desencadenadores mediante lo siguiente:
+
+(Temporizadores, por ejemplo, si una función tiene que ejecutarse todos los días a las 10:00 UTC.
+HTTP, por ejemplo, escenarios de API y webhook.
+Colas, por ejemplo, con procesamiento de pedidos.
+Y mucho más.)
+- Microfacturación: la informática tradicional factura para un bloque de tiempo, como el pago de una tarifa mensual o anual, para el hospedaje de sitios web. Este método de facturación es práctico, pero no siempre es rentable. Incluso si el sitio web de un cliente solo recibe una visita al día, este sigue pagando por tenerlo disponible durante todo el día. 
+
+Azure tiene dos implementaciones de proceso sin servidor:
+
+- Azure Functions: las funciones pueden ejecutar código en prácticamente cualquier lenguaje moderno.
+- Azure Logic Apps: las aplicaciones lógicas están diseñadas en web y pueden ejecutar lógica desencadenada mediante servicios de Azure sin escribir código.
+
+# Azure Functions
+El uso de Azure Functions es ideal si le preocupa solo el código que ejecuta el servicio, pero no la infraestructura o la plataforma subyacentes. Las funciones se usan normalmente cuando se debe realizar un trabajo en respuesta a un evento (a menudo a través de una solicitud REST), un temporizador o un mensaje de otro servicio de Azure, y cuando ese trabajo puede completarse rápidamente, en segundos o en menos tiempo.
+
+Las funciones escalan automáticamente según la demanda, para que sean una opción sólida cuando la demanda es variable.
+
+# Azure Logic Apps
+Las aplicaciones lógicas son similares a las funciones. Ambas permiten desencadenar lógica basada en un evento. Cuando las funciones ejecutan código, las aplicaciones lógicas ejecutan flujos de trabajo diseñados para automatizar escenarios empresariales y compilados a partir de bloques lógicos predefinidos.
+
+# Decisión de cuándo usar Azure Virtual Desktop
+Esta tarea normalmente requeriría la configuración de varios equipos PC nuevos con todas las herramientas de desarrollo necesarias para el nuevo equipo. Después, tendría que enviarlos a los desarrolladores correspondientes. El tiempo de adquisición, configuración y envío de cada uno de estos equipos sería costoso. Además, los nuevos desarrolladores tienen sus propios dispositivos informáticos que ejecutan una combinación de sistemas operativos Windows, Android y macOS.
+
+# ¿Qué es Azure Virtual Desktop?
+Azure Virtual Desktop es un servicio de virtualización de escritorios y aplicaciones que se ejecuta en la nube. Permite que los usuarios usen una versión hospedada en la nube de Windows desde cualquier ubicación. Azure Virtual Desktop funciona en dispositivos como Windows, Mac, iOS, Android y Linux. Funciona con aplicaciones que se pueden usar para acceder a aplicaciones y escritorios remotos. También puede usar la mayoría de los exploradores modernos para acceder a experiencias hospedadas en Azure Virtual Desktop.
+# ¿Por qué debería usar Azure Virtual Desktop?
+- Proporción de la mejor experiencia de usuario
+- Aumento de la seguridad
+# ¿Cuáles son algunas de la principales características de Azure Virtual Desktop?
+- Administración simplificada
+Azure Virtual Desktop es un servicio de Azure, por lo que resultará familiar para los administradores de Azure. Utilice Azure AD y RBAC para administrar el acceso a los recursos
+- Administración del rendimiento
+Azure Virtual Desktop ofrece opciones para equilibrar la carga de los usuarios en los grupos de hosts de máquinas virtuales. Los grupos de hosts son colecciones de máquinas virtuales con la misma configuración asignada a varios usuarios. Para obtener el mejor rendimiento, puede configurar el equilibrio de carga para que se produzca cuando los usuarios inicien sesión (modo de amplitud).
+- Implementación de sesión múltiple de Windows 10
+Azure Virtual Desktop permite usar la sesión múltiple de Windows 10 Enterprise, el único sistema operativo basado en cliente de Windows que permite varios usuarios simultáneos en una sola máquina virtual. 
+
+# ¿Cómo puede reducir costos con Azure Virtual Desktop?
+- Traiga sus propia licencias
+Azure Virtual Desktop está disponible sin costo adicional si tiene una licencia de Microsoft 365 válida. Pague solo por los recursos de Azure que usa en Azure Virtual Desktop.
+- Ahorre en costos de proceso
+Compre licencias de Azure Reserved Virtual Machine Instances de un año o de tres años para ahorrar hasta un 72 %, en comparación con los precios de pago por uso. Puede pagar una reserva por adelantado o mensualmente.
