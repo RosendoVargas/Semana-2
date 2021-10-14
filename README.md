@@ -289,3 +289,48 @@ A lo largo de esta unidad, nos centraremos en dos niveles diferentes del modelo 
 - Nivel 2 (L2): se trata del nivel de vínculo de datos, que proporciona una comunicación de nodo a nodo entre dos nodos de la misma red.
 - Nivel 3 (L3): se trata del nivel de red, que proporciona el direccionamiento y enrutamiento entre los nodos de una red de varios nodos.
  
+# Características y ventajas de ExpressRoute
+El uso de ExpressRoute como servicio de conexión entre Azure y las redes locales tiene varias ventajas.
+
+- Conectividad de nivel 3 entre su red local y Microsoft Cloud a través de un proveedor de conectividad. La conectividad puede ser desde una red de conectividad universal (IP VPN), una red Ethernet de punto a punto, o una conexión cruzada virtual a través de un intercambio de Ethernet.
+- Conectividad de servicios en la nube de Microsoft en todas las regiones dentro de la región geopolítica.
+- Conectividad global a los servicios de Microsoft en todas las regiones con el complemento ExpressRoute Premium.
+- Enrutamiento dinámico entre la red y Microsoft a través de BGP.
+- Redundancia integrada en todas las ubicaciones de configuración entre pares para una mayor confiabilidad.
+- El tiempo de actividad de conexión SLA.
+- Compatibilidad con QoS de Skype para la empresa.
+
+# Conectividad de nivel 3
+ExpressRoute proporciona conectividad de nivel 3 (nivel de dirección) entre la red local y la nube de Microsoft a través de asociados de conectividad. Estas conexiones pueden ser de una red punto a punto o universal. También puede tratarse de conexiones cruzadas virtuales a través de un intercambio.
+# Redundancia integrada
+Cada proveedor de conectividad usa dispositivos redundantes para garantizar que las conexiones establecidas con Microsoft tengan alta disponibilidad. Puede configurar varios circuitos para complementar esta característica. Todas las conexiones redundantes se configuran con conectividad de nivel 3 para cumplir los Acuerdos de Nivel de Servicio.
+# Conectividad con los Servicios en la nube de Microsoft
+ExpressRoute permite el acceso directo a los siguientes servicios en todas las regiones:
+
+- Microsoft Office 365
+- Microsoft Dynamics 365
+- Servicios de proceso de Azure, como Azure Virtual Machines
+- Servicios en la nube de Azure, como Azure Cosmos DB y Azure Storage
+
+Office 365 se creó para tener acceso a él de forma segura y fiable a través de Internet. Por este motivo, se recomienda utilizar ExpressRoute en escenarios concretos. La sección "Más información" al final de este módulo incluye un vínculo sobre el uso de ExpressRoute para acceder a Office 365.
+
+# Conectividad local con Global Reach de ExpressRoute
+Puede permitir que Global Reach de ExpressRoute intercambie datos entre los sitios locales si conecta los diferentes circuitos ExpressRoute. Por ejemplo, supongamos que tiene un centro de datos privado en California conectado a ExpressRoute en Silicon Valley. Tiene otro centro de centros privado en Texas conectado a ExpressRoute en Dallas.
+# Enrutamiento dinámico
+ExpressRoute usa el protocolo de enrutamiento Protocolo de puerta de enlace de borde (BGP). BGP se usa para intercambiar rutas entre las redes locales y los recursos que se ejecutan en Azure. Este protocolo permite el enrutamiento dinámico entre la red local y los servicios que se ejecutan en la nube de Microsoft.
+# Modelos de conectividad de ExpressRoute
+ExpressRoute admite tres modelos que puede usar para conectar la red local con la nube de Microsoft:
+
+- Ubicación de CloudExchange
+- Conexión Ethernet de punto a punto
+- Conexión universal
+
+# Coubicación en un intercambio en la nube
+Normalmente, los proveedores de coubicación pueden ofrecer conexiones de nivel 2 y nivel 3 entre la infraestructura, que puede encontrarse en las instalación de la coubicación, y la nube de Microsoft. 
+# Conexión Ethernet de punto a punto
+Las conexiones de punto a punto proporcionan conectividad de nivel 2 y nivel 3 entre el sitio local y Azure. Puede conectar sus oficinas o centros de datos a Azure mediante vínculos de punto a punto. 
+# Redes universales
+Con la conectividad universal, puede integrar la red de área extensa (WAN) con Azure si proporciona conexiones a las oficinas y los centros de datos. Azure se integra con la conexión WAN para proporcionarle una conexión, como la que tendría entre el centro de datos y las sucursales.
+Con las conexiones universales, todos los proveedores de WAN ofrecen conectividad de nivel 3. 
+# Consideraciones sobre la seguridad
+Con ExpressRoute los datos no viajan a través de la red pública de Internet y, por tanto, no se exponen a los posibles riesgos asociados a las comunicaciones de Internet. ExpressRoute es una conexión privada de la infraestructura local a la infraestructura de Azure. Incluso si tiene una conexión ExpressRoute, las consultas de DNS, la comprobación de la lista de revocación de certificados y las solicitudes de Azure Content Delivery Network se siguen enviando a través de la red pública de Internet.
