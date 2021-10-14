@@ -181,3 +181,111 @@ Las redes virtuales de Azure proporcionan las importantes funcionalidades de red
 - Filtrado del tráfico de red: Grupos de seguridad de red Un grupo de seguridad de red es un recurso de Azure que puede contener varias reglas de seguridad de entrada y salida. y Aplicaciones virtuales de red Una aplicación virtual de red es una máquina virtual especializada que se puede comparar con un dispositivo de red protegido. 
 
 - Conexión de redes virtuales: Puede vincular redes virtuales entre sí mediante el emparejamiento de red virtual. El emparejamiento permite que los recursos de cada red virtual se comuniquen entre sí. Estas redes virtuales pueden estar en regiones distintas, lo que permite crear una red global interconectada con Azure.
+
+# Configuración de Azure Virtual Network
+Puede crear y configurar instancias de Azure Virtual Network desde Azure Portal, Azure PowerShell en el equipo local o Azure Cloud Shell.
+# Creación de una red virtual
+Cuando se crea una red virtual de Azure, se configuran algunas opciones básicas. Tendrá la posibilidad de configurar opciones avanzadas, como varias subredes, protección contra denegación de servicio distribuido (DDoS) y puntos de conexión de servicio.
+Configurará las opciones siguientes para una red virtual básica:
+- Nombre de red
+- Espacio de direcciones
+- Suscripción
+- Grupo de recursos
+- Ubicación
+- Subred
+- Protección contra DDoS
+- Puntos de conexión de servicio
+
+# Definición de opciones de configuración adicionales
+Después de crear una red virtual, puede definir más opciones. Entre ellas se incluyen las siguientes:
+
+- Grupo de seguridad de red Los grupos de seguridad de red tienen reglas de seguridad que permiten filtrar el tipo de tráfico de red que puede entrar o salir de las interfaces de red y las subredes de red virtual. Cree el grupo de seguridad de red por separado. Después, asócielo con la red virtual.
+- Tabla de rutas Azure crea automáticamente una tabla de rutas para cada subred de una red virtual de Azure y agrega las rutas predeterminadas del sistema a la tabla. Puede agregar tablas de rutas personalizadas para modificar el tráfico entre las redes virtuales.
+
+# Configuración de redes virtuales
+Después, puede revisar y cambiar la configuración en paneles secundarios adicionales. Esta configuración incluye:
+
+- Espacios de direcciones: puede agregar espacios de direcciones adicionales a la definición inicial.
+- Dispositivos conectados: use la red virtual para conectar las máquinas.
+- Subredes: puede agregar subredes adicionales.
+- Emparejamientos: vincule las redes virtuales mediante organizaciones de emparejamiento.
+
+Las redes virtuales son mecanismos eficaces y muy configurables para conectar las entidades de Azure. Puede conectar los recursos de Azure entre sí o a los recursos del entorno local. Puede aislar, filtrar y enrutar el tráfico de red. Azure le permite aumentar la seguridad donde considere que es necesario.
+
+# Aspectos básicos de Azure VPN Gateway
+Las redes privadas virtuales usan un túnel cifrado en otra red. Normalmente, se implementan para conectar entre sí dos o más redes privadas de confianza a través de una red que no es de confianza (normalmente, la red pública de Internet). El tráfico se cifra mientras viaja por la red que no es de confianza para evitar ataques de interceptación o de otro tipo.
+
+# Puertas de enlace de VPN
+Una puerta de enlace de VPN es un tipo de puerta de enlace de red virtual. Las instancias de Azure VPN Gateway se implementan en instancias de Azure Virtual Network y habilitan la conectividad siguiente:
+
+- Conectar los centros de datos locales a redes virtuales a través de una conexión de sitio a sitio.
+- Conectar los dispositivos individuales a redes virtuales a través de una conexión de punto a sitio.
+- Conectar las redes virtuales a otras redes virtuales a través de una conexión entre redes.
+
+Al implementar una instancia de VPN Gateway, especifique el tipo de red privada virtual, es decir, basada en directivas o basada en rutas. La principal diferencia entre estos dos tipos de VPN es cómo se especifica el tráfico que se va a cifrar. 
+
+# Redes privadas virtuales basadas en directivas
+Las instancias de VPN Gateway basadas en directivas especifican de forma estática la dirección IP de los paquetes que se deben cifrar a través de cada túnel. Este tipo de dispositivo evalúa cada paquete de datos en función de los conjuntos de direcciones IP para elegir el túnel a través del cual se va a enviar el paquete.
+
+Entre las características clave de las instancias de VPN Gateway basadas en directivas en Azure se incluyen:
+- Compatibilidad solo con IKEv1.
+- Uso del enrutamiento estático, en el que las combinaciones de prefijos de dirección de ambas redes controlan cómo se cifra y descifra el tráfico a través del túnel VPN. 
+- Las redes privadas virtuales basadas en directivas se deben usar en escenarios específicos que las necesiten, por ejemplo, para ofrecer compatibilidad con dispositivos de red privada virtual locales heredados.
+
+# Redes privadas virtuales basadas en rutas
+Si la definición de las direcciones IP que están detrás de cada túnel es demasiado compleja, se pueden usar puertas de enlace basadas en rutas. Con las puertas de enlace basadas en rutas, los túneles IPSec se modelan como una interfaz de red o una interfaz de túnel virtual. 
+El enrutamiento IP (ya sean rutas estáticas o protocolos de enrutamiento dinámico) decide cuál de estas interfaces de túnel se va a usar al enviar cada paquete. Las redes privadas virtuales basadas en rutas son el método preferido para conectar dispositivos locales. Son más resistentes a los cambios de la topología, como la creación de subredes.
+Si necesita alguno de los siguientes tipos de conectividad, use una instancia de VPN Gateway basada en rutas:
+
+- Conexiones entre redes virtuales
+- Conexiones de punto a sitio
+- Conexiones de varios sitios
+- Coexistencia con una puerta de enlace de Azure ExpressRoute
+
+Entre las características clave de las instancias de VPN Gateway basadas en rutas en Azure se incluyen:
+
+- Compatibilidad con IKEv2
+- Uso de selectores de tráfico universales (comodín)
+- Puede usar protocolos de enrutamiento dinámico, donde las tablas de enrutamiento y reenvío dirigen el tráfico a diferentes túneles IPSec. En este caso, las redes de origen y destino no se definen estáticamente como en las VPN basadas en directivas o incluso en las VPN basadas en rutas con enrutamiento estático.
+
+# Implementación de instancias de VPN Gateway
+Antes de implementar una instancia de VPN Gateway, necesitará algunos recursos de Azure y locales.
+
+# Recursos de Azure necesarios
+Se necesitarán estos recursos de Azure para poder implementar una instancia de VPN Gateway operativa:
+- Red virtual. Implemente una red virtual que tenga suficiente espacio de direcciones para la subred adicional que necesitará para la instancia de VPN Gateway.
+- GatewaySubnet. Implemente una subred llamada GatewaySubnet para la instancia de VPN Gateway. Use al menos una máscara de dirección /27 con el fin de asegurarse de que proporciona suficientes direcciones IP en la subred para un crecimiento futuro.
+- Dirección IP pública. Cree una dirección IP pública dinámica de SKU básico si usa una puerta de enlace que no tenga en cuenta la zona. Esta dirección proporciona una dirección IP pública enrutable como destino para el dispositivo VPN local. 
+- Puerta de enlace de red local. Cree una puerta de enlace de red local para definir la configuración de la red local; por ejemplo, dónde y a qué se conectará la instancia de VPN Gateway. 
+- Puerta de enlace de red virtual. Cree la puerta de enlace de red virtual para enrutar el tráfico entre la red virtual y el centro de datos local u otras redes virtuales.
+- Conexión. Cree un recurso de conexión para crear una conexión lógica entre la instancia de VPN Gateway y la puerta de enlace de red local.
+
+       La conexión se realiza a las direcciones IPv4 del dispositivo VPN local, tal como define la puerta de enlace de red local.
+       La conexión se realiza desde la puerta de enlace de red virtual y la dirección IP pública asociada.
+       
+# Recursos locales necesarios
+Para conectar el centro de datos a una instancia de VPN Gateway, se necesitarán los siguientes recursos locales:
+
+- Un dispositivo VPN que admita instancias de VPN Gateway basadas en directivas o en rutas.
+- Una dirección IPv4 de acceso público (enrutable por Internet).
+
+# Escenarios de alta disponibilidad
+ 
+- Configuración de activo-en espera: De forma predeterminada, las instancias de VPN Gateway se implementan como dos instancias en una configuración de activo-en espera, incluso si solo ve un recurso de VPN Gateway en Azure. Cuando el mantenimiento planeado o la interrupción imprevista afectan a la instancia activa, la instancia en espera asume de forma automática la responsabilidad de las conexiones sin ninguna intervención del usuario. 
+- Activo/activo: Al incorporar compatibilidad con el protocolo de enrutamiento de BGP, también puede implementar puertas de enlace VPN en una configuración del tipo activo/activo. En esta configuración, se asigna una IP pública única a cada instancia. Después, se crean túneles independientes desde el dispositivo local a cada dirección IP. 
+- Conmutación por error de ExpressRoute: Otra opción de alta disponibilidad consiste en configurar una instancia de VPN Gateway como una ruta segura de conmutación por error para las conexiones ExpressRoute. Los circuitos ExpressRoute tienen resistencia integrada. Sin embargo, no son inmunes a los problemas físicos que afectan a los cables que entregan conectividad ni a las interrupciones que afectan a la ubicación completa de ExpressRoute. 
+- Puertas de enlace con redundancia de zona: En las regiones que admiten zonas de disponibilidad, se pueden implementar puertas de enlace VPN y ExpressRoute en una configuración con redundancia de zona.
+
+# Aspectos básicos de Azure ExpressRoute
+
+ExpressRoute le permite ampliar las redes locales a la nube de Microsoft mediante una conexión privada con la ayuda de un proveedor de conectividad. Con ExpressRoute, puede establecer conexiones con servicios en la nube de Microsoft, como Microsoft Azure y Microsoft 365.
+
+La conectividad puede ser desde una red de conectividad universal (IP VPN), una red Ethernet de punto a punto o una conexión cruzada virtual a través de un proveedor de conectividad en una instalación de ubicación compartida. Las conexiones de ExpressRoute no pasan por la red pública de Internet. Esto permite a las conexiones de ExpressRoute ofrecer más confiabilidad, más velocidad, latencia coherentes y mayor seguridad que las conexiones normales a través de Internet. Para información sobre cómo conectar la red a Microsoft mediante ExpressRoute, consulte ExpressRoute connectivity models (Modelos de conectividad de ExpressRoute).
+
+Como parte de su trabajo para Tailwind Traders, debe comprender qué es Azure ExpressRoute y cómo se integra con las redes locales y de Azure. En esta unidad, conocerá las ventajas que proporciona ExpressRoute en comparación con otras opciones de conectividad de sitio a sitio. Como resultado, observará si ExpressRoute puede proporcionar a la empresa el mejor rendimiento de red posible.
+
+A lo largo de esta unidad, nos centraremos en dos niveles diferentes del modelo de interconexión de sistemas abiertos (OSI):
+
+- Nivel 2 (L2): se trata del nivel de vínculo de datos, que proporciona una comunicación de nodo a nodo entre dos nodos de la misma red.
+- Nivel 3 (L3): se trata del nivel de red, que proporciona el direccionamiento y enrutamiento entre los nodos de una red de varios nodos.
+ 
