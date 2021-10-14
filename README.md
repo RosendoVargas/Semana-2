@@ -156,3 +156,28 @@ Azure Virtual Desktop permite usar la sesión múltiple de Windows 10 Enterprise
 Azure Virtual Desktop está disponible sin costo adicional si tiene una licencia de Microsoft 365 válida. Pague solo por los recursos de Azure que usa en Azure Virtual Desktop.
 - Ahorre en costos de proceso
 Compre licencias de Azure Reserved Virtual Machine Instances de un año o de tres años para ahorrar hasta un 72 %, en comparación con los precios de pago por uso. Puede pagar una reserva por adelantado o mensualmente.
+
+# Exploración de los servicios de red de Azure
+# Introducción
+Supongamos que su empresa, Tailwind Traders, ha migrado algunas aplicaciones a la nube y está diseñando otras aplicaciones nuevas. Los servidores que hospedan los datos de clientes y productos de Tailwind Traders residen en Silicon Valley. Su empresa también tiene varias sucursales ubicadas en diferentes regiones geográficas. Como parte de la estrategia de migración, su empresa debe determinar el enfoque correcto para configurar su infraestructura de red.
+# Aspectos básicos de Azure Virtual Network
+Tailwind Traders tiene un centro de datos local que va a mantener, pero quiere usar Azure para descargar los picos de tráfico mediante máquinas virtuales (VM) hospedadas en Azure. Quiere mantener el esquema de direcciones IP y los dispositivos de red existentes, y asegurarse de que todas las transferencias de datos sean seguras.
+# ¿Qué son las redes virtuales de Azure?
+Las redes virtuales de Azure permiten a los recursos de Azure, como las máquinas virtuales, las aplicaciones web y las bases de datos, comunicarse entre sí, con los usuarios de Internet y con los equipos cliente en el entorno local.
+
+Las redes virtuales de Azure proporcionan las importantes funcionalidades de red siguientes:
+
+- Aislamiento y segmentación: Virtual Network permite crear varias redes virtuales aisladas. Al configurar una red virtual, se define un espacio de direcciones IP privadas con intervalos de direcciones IP públicas o privadas.
+- Comunicación con Internet: Una máquina virtual en Azure se puede conectar a Internet de forma predeterminada. Puede habilitar las comunicaciones entrantes desde Internet si define una dirección IP pública o un equilibrador de carga público. 
+- Comunicación entre los recursos de Azure: Le interesará habilitar los recursos de Azure para que se comuniquen entre sí de forma segura. Puede hacerlo de dos maneras:
+
+   Redes virtuales Las redes virtuales no solo pueden conectar máquinas virtuales, sino también otros recursos de Azure, como App Service Environment para Power Apps, Azure Kubernetes Service y conjuntos de escalado de máquinas virtuales de Azure.
+   Puntos de conexión de servicio Puede usar los puntos de conexión de servicio para conectarse a otros tipos de recursos de Azure, como cuentas de almacenamiento y bases de datos SQL de Azure. Este enfoque permite vincular varios recursos de Azure con las redes virtuales para mejorar la seguridad y proporcionar un enrutamiento óptimo entre los recursos.
+   
+- Comunicación con recursos locales: Las redes virtuales de Azure permiten vincular entre sí los recursos del entorno local y dentro de la suscripción de Azure. De hecho, puede crear una red que abarque tanto el entorno local como el entorno en la nube; Redes privadas virtuales de punto a sitio, Redes virtuales privadas de sitio a sitio y Azure ExpressRoute
+
+- Enrutamiento del tráfico de red: De forma predeterminada, Azure enruta el tráfico entre las subredes de todas las redes virtuales conectadas, las redes locales e Internet. También puede controlar el enrutamiento e invalidar esa configuración del siguiente modo: Tablas de rutas, rotocolo de puerta de enlace de borde.
+
+- Filtrado del tráfico de red: Grupos de seguridad de red Un grupo de seguridad de red es un recurso de Azure que puede contener varias reglas de seguridad de entrada y salida. y Aplicaciones virtuales de red Una aplicación virtual de red es una máquina virtual especializada que se puede comparar con un dispositivo de red protegido. 
+
+- Conexión de redes virtuales: Puede vincular redes virtuales entre sí mediante el emparejamiento de red virtual. El emparejamiento permite que los recursos de cada red virtual se comuniquen entre sí. Estas redes virtuales pueden estar en regiones distintas, lo que permite crear una red global interconectada con Azure.
