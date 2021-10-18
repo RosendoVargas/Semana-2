@@ -386,3 +386,46 @@ Use Azure Files para las siguientes situaciones:
 
 Una cosa que distingue Azure Files de los archivos ubicados en un recurso compartido de archivos corporativo es que puede tener acceso a los archivos desde cualquier lugar del mundo mediante una dirección URL que apunte al archivo. También puede usar tokens de Firma de acceso compartido (SAS) para permitir el acceso a un recurso privado durante un período de tiempo determinado.
 
+# Descripción de los niveles de acceso de blobs
+
+Los datos almacenados en la nube pueden crecer a un ritmo exponencial. Para administrar los costos de las crecientes necesidades de almacenamiento, resulta útil organizar los datos en función de atributos como la frecuencia de acceso y el período de retención planeada. Los datos almacenados en la nube pueden ser diferentes según la forma en que se generan, se procesan y se accede a ellos a lo largo de su vigencia. A algunos datos se accede y se modifican activamente a lo largo de su duración. A algunos datos se accede con frecuencia al principio de su duración, mientras que el acceso cae drásticamente a medida que envejecen los datos. Algunos datos permanecen inactivos en la nube y, después de que se almacenan, no se accede a ellos prácticamente nunca. Para dar cabida a estas diferentes necesidades de acceso, Azure proporciona varios niveles de acceso, que puede usar para equilibrar los costos de almacenamiento con sus necesidades de acceso.
+
+
+Azure Storage ofrece diferentes niveles de acceso para el almacenamiento de blobs, lo que le ayuda a almacenar datos de objetos de la manera más rentable. Entre los niveles de acceso disponibles se incluyen:
+
+- Nivel de acceso frecuente: optimizado para almacenar datos a los que se accede con frecuencia (por ejemplo, imágenes para el sitio web).
+- Nivel de acceso esporádico: optimizado para datos a los que se accede con poca frecuencia y que se almacenan al menos durante 30 días (por ejemplo, las facturas de los clientes).
+- Nivel de acceso de archivo: conveniente para datos a los que raramente se accede y que se almacenan durante al menos 180 días con requisitos de latencia flexibles (por ejemplo, copias de seguridad a largo plazo).
+
+# Las siguientes consideraciones se aplican a los distintos niveles de acceso:
+
+- Solo los niveles de acceso frecuente y esporádico se pueden establecer en el nivel de cuenta. El nivel de acceso de archivo no está disponible en el nivel de cuenta.
+- Los niveles frecuente, esporádico y de archivo se pueden establecer en el nivel de blob durante la carga o después de esta.
+- Los datos del nivel de acceso esporádico pueden tolerar una disponibilidad ligeramente inferior, pero aun así requieren una gran durabilidad, una latencia de recuperación y unas características de rendimiento similares a las de los datos de acceso frecuente. En el caso de los datos de acceso esporádico, un contrato de nivel de servicio (SLA) con una disponibilidad ligeramente inferior y unos costos de acceso mayores, en comparación con los datos de acceso frecuente, es aceptable a cambio de unos costos de almacenamiento menores.
+- El almacenamiento de archivo almacena datos sin conexión y ofrece los menores costos de almacenamiento, pero los mayores costos de acceso y rehidratación de datos.
+
+
+# Exploración de los servicios de análisis y bases de datos de Azure!!!
+
+# Introducción
+
+Debido a un número cada vez mayor de adquisiciones durante la última década, Tailwind Traders usa diversas tecnologías de análisis y bases de datos. A medida que la empresa empiece a migrar las cargas de trabajo de datos existentes y a implementar nuevas cargas de trabajo de datos en Azure, esta debe comprender qué tecnología de Azure será la adecuada para cada carga de trabajo. El director de tecnología de la empresa le ha asignado la tarea de investigar las distintas opciones de bases de datos disponibles. Esta investigación ayudará a la empresa a elegir las opciones adecuadas para cada uno de los escenarios de datos.
+
+# Exploración de Azure Cosmos DB
+
+A lo largo de los años, Tailwind Traders ha adquirido varias empresas más pequeñas. Cada una de estas empresas tenía equipos de desarrolladores que usaban diferentes servicios de bases de datos y varias API para trabajar con sus datos. Un plan a largo plazo podría ser trasladar todos los datos dispares a un servicio de base de datos común. Por el momento, sin embargo, es mejor habilitar cada uno de estos equipos para que trabajen con un entorno en el que puedan usar sus conocimientos existentes. Afortunadamente, Azure Cosmos DB puede ayudarle.
+
+Azure Cosmos DB es un servicio de base de datos de varios modelos distribuido globalmente. Puede escalar de forma elástica e independiente el rendimiento y el almacenamiento en cualquier número de regiones de Azure de todo el mundo. Puede aprovechar un acceso rápido y en milisegundos de un solo dígito a los datos mediante cualquiera de las diversas API populares. Azure Cosmos DB proporciona de forma exclusiva contratos de nivel de servicio completos para garantizar el rendimiento, la latencia, la disponibilidad y la coherencia.
+
+Azure Cosmos DB es compatible con los datos sin esquema, lo que le permite compilar aplicaciones "Always On" con una gran capacidad de respuesta para admitir datos en continuo cambio.
+
+Azure Cosmos DB es flexible. En el nivel más bajo, Azure Cosmos DB almacena los datos en formato de secuencia de registro de átomos (ARS). Después, los datos se abstraen y se proyectan como una API, que se especifica al crear la base de datos. Entre las opciones se incluyen SQL, MongoDB, Cassandra, Tables y Gremlin. Este nivel de flexibilidad implica que, al migrar las bases de datos de la empresa a Azure Cosmos DB, los desarrolladores pueden seguir con la API con la que se encuentren más cómodos.
+
+# Exploración de Azure SQL Database
+
+Azure SQL Database es una base de datos relacional basada en la última versión estable del motor de base de datos de Microsoft SQL Server. SQL Database es una base de datos de alto rendimiento, confiable, totalmente administrada y segura. Puede usarla para compilar aplicaciones y sitios web controlados por datos en el lenguaje de programación que prefiera sin necesidad de administrar infraestructura.
+
+- Características: Azure SQL Database es un motor de base de datos de plataforma como servicio (PaaS). Controla la mayoría de las funciones de administración de bases de datos, como las actualizaciones, las aplicaciones de revisiones, las copias de seguridad y la supervisión, sin intervención del usuario. SQL Database proporciona disponibilidad del 99,99 %.  Puede crear una capa de almacenamiento de datos de gran rendimiento y disponibilidad para las aplicaciones y las soluciones de Azure. SQL Database puede ser la opción adecuada para una variedad de aplicaciones modernas en la nube, porque le permite procesar tanto datos relacionales como estructuras no relacionales, por ejemplo, grafos, JSON, elementos espaciales y XML.
+- Migración: En la actualidad, Tailwind Traders usa varios servidores locales que ejecutan SQL Server, que proporcionan almacenamiento de datos para el sitio web de acceso público (por ejemplo, datos de clientes, historial de pedidos y catálogos de productos). Además, los servidores locales que ejecutan SQL Server también proporcionan almacenamiento de datos para el sitio web del portal de aprendizaje solo para uso interno. Tailwind Traders usa el sitio web para los materiales de aprendizaje de los nuevos empleados (como los materiales de estudio, los detalles de certificación y los certificados de aprendizaje). En la ilustración siguiente se muestran los tipos de datos que su empresa puede almacenar en el sitio web del portal de aprendizaje de Azure SQL Database.
+
+Puede migrar las bases de datos existentes de SQL Server con un tiempo de inactividad mínimo mediante Azure Database Migration Service. Microsoft Data Migration Assistant puede generar informes de evaluación que proporcionan recomendaciones para ayudarlo a través de los cambios necesarios anteriores a la ejecución de una migración. Después de evaluar y resolver cualquier corrección necesaria, está listo para comenzar el proceso de migración. Azure Database Migration Service realiza todos los pasos necesarios. 
