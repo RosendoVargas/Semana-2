@@ -334,3 +334,55 @@ Con la conectividad universal, puede integrar la red de área extensa (WAN) con 
 Con las conexiones universales, todos los proveedores de WAN ofrecen conectividad de nivel 3. 
 # Consideraciones sobre la seguridad
 Con ExpressRoute los datos no viajan a través de la red pública de Internet y, por tanto, no se exponen a los posibles riesgos asociados a las comunicaciones de Internet. ExpressRoute es una conexión privada de la infraestructura local a la infraestructura de Azure. Incluso si tiene una conexión ExpressRoute, las consultas de DNS, la comprobación de la lista de revocación de certificados y las solicitudes de Azure Content Delivery Network se siguen enviando a través de la red pública de Internet.
+
+# Exploración de los servicios de Azure Storage!!!
+
+# Introducción
+
+Supongamos que su empresa, Tailwind Traders, tiene una serie de folletos de productos, hojas de datos, imágenes de productos y otros archivos relacionados con el marketing, las ventas y el soporte técnico. En el pasado, su empresa ha hospedado estos archivos en servidores web independientes en su centro de datos.
+
+Su empresa ahora está en proceso de migrar sus aplicaciones a la nube y su equipo de desarrollo actualmente está diseñando nuevas aplicaciones. Su director tecnológico (CTO) quiere migrar todos los archivos de marketing, ventas y soporte técnico a la nube con el fin de aprovechar la distribución geográfica de los archivos. Esta migración también reduce el número de servidores físicos que mantiene su empresa en su centro de datos. Como parte de la estrategia de migración, debe determinar el enfoque correcto para su infraestructura de almacenamiento basado en la nube.
+
+# Aspectos básicos de la cuenta de Azure Storage
+
+El director tecnológico (CTO) de su empresa, Tailwind Traders, ha encargado a su equipo la tarea de migrar todos los archivos a la nube. El equipo ha elegido Azure Storage, que es un servicio que puede usar para almacenar archivos, mensajes, tablas y otros tipos de información. Los clientes como sitios web, aplicaciones móviles, aplicaciones de escritorio y muchos otros tipos de soluciones personalizadas pueden leer y escribir datos en Azure Storage. Azure Storage también se usa en máquinas virtuales de infraestructura como servicio y en servicios en la nube de plataforma como servicio.
+
+Una cuenta de almacenamiento proporciona un espacio de nombres único para los datos de Azure Storage, al que se puede acceder desde cualquier lugar del mundo a través de HTTP o HTTPS. Los datos de esta cuenta son seguros, de alta disponibilidad, duraderos y escalables de forma masiva.
+
+# Aspectos básicos de Disk Storage
+
+Disk Storage proporciona discos para Azure Virtual Machines. Las aplicaciones y otros servicios pueden acceder a estos discos y usarlos cuando sea necesario, igual que se haría en escenarios locales. Disk Storage permite que los datos se almacenen de forma persistente y que se acceda a ellos desde un disco duro virtual conectado.
+
+Los discos tienen diferentes tamaños y niveles de rendimiento, desde unidades de estado sólido (SSD) a unidades de disco duro (HDD) giratorias tradicionales, con diferentes niveles de rendimiento. Puede usar discos SSD y HDD estándar para cargas de trabajo menos críticas, discos SSD Premium para aplicaciones de producción críticas y Ultra Disks para cargas de trabajo con un uso intensivo de datos como SAP HANA, bases de datos de nivel superior y cargas de trabajo con mucha actividad de transacciones. Azure han ofrecido durabilidad de nivel empresarial de forma coherente para los discos de infraestructura como servicio (IaaS), con una tasa de error anualizada del 0 % líder del sector.
+
+# Aspectos básicos de Azure Blob Storage
+
+Azure Blob Storage es una solución de almacenamiento de objetos para la nube. Puede almacenar grandes cantidades de datos, como datos de texto o binarios. Azure Blob Storage es no estructurado, lo que significa que no hay ninguna restricción en cuanto a los tipos de datos que puede contener. Blob Storage puede administrar miles de cargas simultáneas, cantidades enormes de datos de vídeo, archivos de registro en constante crecimiento y es accesible desde cualquier lugar con conexión a Internet.
+Los blobs no están limitados a formatos de archivo comunes. Un blob podría contener gigabytes de datos binarios transmitidos desde un instrumento científico, un mensaje cifrado para otra aplicación o datos en un formato personalizado para una aplicación que se está desarrollando. Una ventaja del almacenamiento en blobs con respecto al almacenamiento en disco es que no requiere que los desarrolladores piensen en discos o los administren; los datos se cargan como blobs y Azure se encarga de las necesidades de almacenamiento físico.
+
+Blob Storage resulta ideal para lo siguiente:
+
+- Visualización de imágenes o documentos directamente en un explorador.
+- Almacenamiento de archivos para acceso distribuido.
+- Streaming de audio y vídeo.
+- Almacenamiento de datos para copia de seguridad y restauración, recuperación ante desastres y archivado.
+- Almacenamiento de datos para el análisis en local o en un servicio hospedado de Azure.
+- Almacenamiento de hasta 8 TB de datos para máquinas virtuales.
+
+Los blobs se almacenan en contenedores, lo que ayuda a organizar los blobs en función de sus necesidades empresariales.
+
+En el diagrama siguiente se muestra cómo puede usar las cuentas, los contenedores y los blobs de Azure.
+![image](https://user-images.githubusercontent.com/92233744/137811284-fe4b8a85-f5b1-4345-b7ec-70452b211d5c.png)
+
+# Aspectos básicos de Azure Files
+
+Azure Files ofrece recursos compartidos de archivos totalmente administrados en la nube a los que se puede acceder mediante los protocolos del Bloque de mensajes del servidor y Network File System (versión preliminar). Los recursos compartidos de Azure se pueden montar simultáneamente en implementaciones de Windows, Linux y macOS en la nube o locales. Las aplicaciones que se ejecutan en máquinas virtuales o servicios en la nube de Azure pueden montar un recurso compartido de almacenamiento de archivos para acceder a datos de archivos, del mismo modo que una aplicación de escritorio montaría un recurso compartido SMB normal. 
+
+Use Azure Files para las siguientes situaciones:
+
+- Muchas aplicaciones locales usan recursos compartidos de archivos. Azure Files facilita la migración de esas aplicaciones que comparten datos a Azure. Si monta el recurso compartido de archivos en la misma letra de unidad que usa la aplicación local, la parte de la aplicación que accede al recurso compartido de archivos debe funcionar con cambios mínimos, si los hay.
+- Almacene archivos de configuración en un recurso compartido de archivos y acceda a ellos desde varias máquinas virtuales. Las herramientas y utilidades que usen varios desarrolladores de un grupo pueden almacenarse en un recurso compartido de archivos, lo que garantiza que todos los usuarios puedan encontrarlas y que utilizan la misma versión.
+- Escriba datos en un recurso compartido de archivos y procese o analice los datos más adelante. Por ejemplo, puede que desee hacerlo con registros de diagnóstico, métricas y volcados de memoria.
+
+Una cosa que distingue Azure Files de los archivos ubicados en un recurso compartido de archivos corporativo es que puede tener acceso a los archivos desde cualquier lugar del mundo mediante una dirección URL que apunte al archivo. También puede usar tokens de Firma de acceso compartido (SAS) para permitir el acceso a un recurso privado durante un período de tiempo determinado.
+
