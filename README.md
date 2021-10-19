@@ -429,3 +429,58 @@ Azure SQL Database es una base de datos relacional basada en la última versión
 - Migración: En la actualidad, Tailwind Traders usa varios servidores locales que ejecutan SQL Server, que proporcionan almacenamiento de datos para el sitio web de acceso público (por ejemplo, datos de clientes, historial de pedidos y catálogos de productos). Además, los servidores locales que ejecutan SQL Server también proporcionan almacenamiento de datos para el sitio web del portal de aprendizaje solo para uso interno. Tailwind Traders usa el sitio web para los materiales de aprendizaje de los nuevos empleados (como los materiales de estudio, los detalles de certificación y los certificados de aprendizaje). En la ilustración siguiente se muestran los tipos de datos que su empresa puede almacenar en el sitio web del portal de aprendizaje de Azure SQL Database.
 
 Puede migrar las bases de datos existentes de SQL Server con un tiempo de inactividad mínimo mediante Azure Database Migration Service. Microsoft Data Migration Assistant puede generar informes de evaluación que proporcionan recomendaciones para ayudarlo a través de los cambios necesarios anteriores a la ejecución de una migración. Después de evaluar y resolver cualquier corrección necesaria, está listo para comenzar el proceso de migración. Azure Database Migration Service realiza todos los pasos necesarios. 
+
+# Exploración de Azure Database for MySQL
+
+En la actualidad, Tailwind Traders administra varios sitios web locales que usan la pila LAMP (Linux, Apache, MySQL y PHP). Como parte del planeamiento de la estrategia de migración, los distintos equipos de Tailwind Traders han estado investigando las ofertas de servicios disponibles que proporciona Azure. 
+
+Azure Database for MySQL es un servicio de bases de datos relacionales en la nube, y se basa en el motor de base de datos de MySQL Community Edition, versiones 5.6, 5.7 y 8.0. Con él, tiene un contrato de nivel de servicio de disponibilidad del 99,99 % de Azure, con la tecnología de una red global de centros de recursos administrados por Microsoft. Esto ayuda a mantener la aplicación ejecutándose de forma ininterrumpida. 
+
+Azure Database for MySQL ofrece lo siguiente:
+
+- Alta disponibilidad integrada sin coste adicional.
+- Rendimiento predecible y precios de pago por uso inclusivos.
+- Escalado según sea necesario, en cuestión de segundos.
+- Capacidad de protección de información confidencial en reposo y en movimiento.
+- Copias de seguridad automáticas.
+- Seguridad y cumplimiento de nivel empresarial.
+
+Estas funcionalidades no requieren casi ninguna tarea de administración y todas se proporcionan sin ningún costo adicional. Le permiten centrarse en el desarrollo rápido de aplicaciones y en reducir el plazo de comercialización, en lugar de tener que administrar las máquinas virtuales y la infraestructura. 
+
+Azure Database for MySQL ofrece varios niveles de servicio, y cada uno de ellos aporta un rendimiento y una funcionalidad diferentes para admitir cargas de trabajo de bases de datos ligeras y pesadas. 
+
+# Exploración de Azure Database for PostgreSQL
+
+Como parte de su estrategia general de datos, Tailwind Traders ha estado usando PostgreSQL durante varios años. Es posible que usted y su equipo ya conozcan las ventajas de PostgreSQL. Una parte de su migración consiste en usar Azure Database for PostgreSQL, y quiere asegurarse de que tendrá acceso a los mismos beneficios que en el servidor local antes de pasar a la nube.
+
+Azure Database for PostgreSQL es un servicio de base de datos relacional en la nube. El software de servidor se basa en la versión de la comunidad del motor de base de datos de PostgreSQL de código abierto. Su familiaridad con las herramientas y la experiencia con PostgreSQL son aplicables cuando se use Azure Database for PostgreSQL.
+
+Además, Azure Database for PostgreSQL ofrece las siguientes ventajas:
+
+- Alta disponibilidad integrada en comparación con los recursos locales. No hay ninguna configuración, replicación o costo adicionales que sean necesarios para asegurarse de que las aplicaciones están siempre disponibles.
+- Precios sencillos y flexibles. Tiene un rendimiento predecible en función de un plan de tarifa seleccionado que incluye copias de seguridad automáticas, aplicación de revisiones de software, supervisión y seguridad.
+- Escalado o reducción vertical según sea necesario, en cuestión de segundos. Puede escalar procesos o almacenamiento por separado según sea necesario para asegurarse de que adapta su servicio para que coincida con el uso.
+- Copias de seguridad automáticas ajustables y restauración a un momento dado durante un máximo de 35 días.
+- Seguridad y cumplimiento de nivel empresarial para proteger la información confidencial en reposo y en movimiento. Esta seguridad abarca el cifrado de datos en el disco y el cifrado SSL entre la comunicación entre cliente y servidor.
+
+Azure Database for PostgreSQL está disponible en dos opciones de implementación: Servidor único e Hiperescala (Citus).
+
+Servidor único
+
+La opción de implementación Un solo servidor ofrece:
+
+- Alta disponibilidad integrada sin coste adicional (contrato de nivel de servicio del 99,99 %).
+- Rendimiento predecible y precios de pago por uso inclusivos.
+- Escalado vertical según sea necesario, en cuestión de segundos.
+- Supervisión y alertas para evaluar el servidor.
+- Seguridad y cumplimiento de nivel empresarial.
+- Capacidad de protección de información confidencial en reposo y en movimiento.
+- Copias de seguridad automáticas y restauración a un momento dado durante un máximo de 35 días.
+
+Todas estas funcionalidades apenas requieren tareas de administración y todas se proporcionan sin costo adicional. 
+
+Hiperescala (Citus)
+
+La opción de Hiperescala (Citus) escala horizontalmente las consultas entre varias máquinas mediante el particionamiento. Su motor de consultas paraleliza las consultas SQL entrantes en estos servidores para agilizar las respuestas en conjuntos de datos grandes. Proporciona servicios a las aplicaciones que requieren mayor escala y mejor rendimiento, por lo general las cargas de trabajo que se aproximan a los 100 GB de datos (o que ya los superan).
+
+La opción de implementación de Hiperescala (Citus) admite aplicaciones multiinquilino, análisis operativos en tiempo real y cargas de trabajo transaccionales de alto rendimiento. Las aplicaciones compiladas para PostgreSQL puede ejecutar consultas distribuidas en Citus con las bibliotecas de conexiones estándar y unos cambios mínimos.
