@@ -484,3 +484,32 @@ Hiperescala (Citus)
 La opción de Hiperescala (Citus) escala horizontalmente las consultas entre varias máquinas mediante el particionamiento. Su motor de consultas paraleliza las consultas SQL entrantes en estos servidores para agilizar las respuestas en conjuntos de datos grandes. Proporciona servicios a las aplicaciones que requieren mayor escala y mejor rendimiento, por lo general las cargas de trabajo que se aproximan a los 100 GB de datos (o que ya los superan).
 
 La opción de implementación de Hiperescala (Citus) admite aplicaciones multiinquilino, análisis operativos en tiempo real y cargas de trabajo transaccionales de alto rendimiento. Las aplicaciones compiladas para PostgreSQL puede ejecutar consultas distribuidas en Citus con las bibliotecas de conexiones estándar y unos cambios mínimos.
+
+# Exploración de Azure SQL Managed Instance
+
+Azure SQL Managed Instance es un servicio de datos en la nube escalable que proporciona la mayor compatibilidad con el motor de base de datos de SQL Server con todas las ventajas de una plataforma como servicio totalmente administrada. En función de su escenario, Azure SQL Managed Instance podría ofrecer más opciones para sus necesidades de base de datos.
+
+# Características
+Al igual que Azure SQL Database, Azure SQL Managed Instance es un motor de base de datos de plataforma como servicio (PaaS), lo que significa que su empresa podrá aprovechar las mejores características de mover los datos a la nube en un entorno totalmente administrado. 
+Azure SQL Database y Azure SQL Managed Instance ofrecen muchas características iguales, pero Azure SQL Managed Instance proporciona varias opciones que puede que no estén disponibles en Azure SQL Database. 
+
+# Migración
+
+Azure SQL Managed Instance facilita la migración de los datos locales en SQL Server a la nube con Azure Database Migration Service (DMS) o copias de seguridad y restauración nativas. Una vez que haya descubierto todas las características que usa la empresa, deberá evaluar qué instancias locales de SQL Server puede migrar a Azure SQL Managed Instance para ver si tiene algún problema de bloqueo. Una vez resueltas las incidencias, puede migrar los datos y, después, realizar la transferencia desde el servidor SQL Server local a la instancia de Azure SQL Managed Instance cambiando la cadena de conexión en las aplicaciones.
+
+# Exploración de análisis y macrodatos
+
+Hace varios años, Tailwind Traders implementó un nuevo sistema de seguimiento GPS para todos sus vehículos de entrega. El nuevo sistema proporciona datos de seguimiento en tiempo real a su centro de datos principal. Su director de tecnología pide a su equipo examinar varios años de datos de seguimiento para determinar las tendencias. 
+
+La forma y el formato de los datos son muy variados. Cuando hablamos sobre macrodatos, nos referimos a grandes volúmenes de datos. En este escenario de Tailwind Traders, los datos se recopilan de los sensores GPS, que incluyen información de ubicación, datos de los sistemas del tiempo y muchos otros orígenes que generan grandes cantidades de datos. Con tal cantidad de datos, es cada vez más difícil comprenderlos y tomar decisiones basándose en ellos.
+
+A lo largo del tiempo, se han desarrollado tecnologías de clúster de código abierto para tratar con estos grandes conjuntos de datos. Microsoft Azure admite una amplia gama de tecnologías y servicios para proporcionar soluciones de macrodatos y análisis, como Azure Synapse Analytics, Azure HDInsight, Azure Databricks y Azure Data Lake Analytics.
+
+# Azure Synapse Analytics
+Azure Synapse Analytics (anteriormente Azure SQL Data Warehouse) es un servicio de análisis ilimitado que reúne el almacenamiento de datos empresariales y el análisis de macrodatos. 
+# Azure HDInsight
+Azure HDInsight es un servicio de análisis de código abierto totalmente administrado para empresas. Es un servicio en la nube que hace que sea más fácil, rápido y rentable procesar grandes cantidades de datos. Puede ejecutar marcos de código abierto populares y crear tipos de clúster, como Apache Spark, Apache Hadoop, Apache Kafka, Apache HBase, Apache Storm y Machine Learning Services. HDInsight también admite una amplia gama de escenarios, como la extracción, la transformación y la carga de datos (ETL), el almacenamiento de datos, el aprendizaje automático e IoT.
+# Azure Databricks
+Azure Databricks le ayuda a descubrir información de todos los datos y a crear soluciones de inteligencia artificial. Puede configurar el entorno de Apache Spark en minutos y, después, escalar automáticamente y colaborar en proyectos compartidos en un área de trabajo interactiva. Azure Databricks admite Python, Scala, R, Java y SQL, así como marcos y bibliotecas de ciencia de datos, como TensorFlow, PyTorch y Scikit-learn.
+# Análisis con Azure Data Lake
+Azure Data Lake Analytics es un servicio de trabajos de análisis a petición que simplifica los macrodatos. En lugar de implementar, configurar y ajustar el hardware, escribirá consultas para transformar los datos y extraer ideas valiosas. El servicio de análisis puede administrar trabajos de cualquier escala al instante, simplemente estableciendo el ajuste adecuado. 
